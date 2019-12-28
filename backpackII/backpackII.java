@@ -7,8 +7,8 @@ public class Solution {
      */
     public int backPackII(int m, int[] A, int[] V) {
         final List<Integer> dp = Collections.nCopies(m + 1, 0).stream().collect(java.util.stream.Collectors.toList());
-        for (int i = 0; i != A.length; ++i)
-            for (int j = m; j != A[i] - 1; --j) dp.set(j, Math.max(dp.get(j), dp.get(j - A[i]) + V[i]));
+        java.util.stream.IntStream.range(0, A.length).forEach(i -> {
+            for (int j = m; j != A[i] - 1; --j) dp.set(j, Math.max(dp.get(j), dp.get(j - A[i]) + V[i]));});
         return dp.get(dp.size() - 1);
     }
 }
