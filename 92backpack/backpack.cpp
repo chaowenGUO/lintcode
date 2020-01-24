@@ -11,6 +11,6 @@ public:
         dp.front() = 1;
         for (auto const item: A)
             for (std::size_t size{m}; size != 0; --size) dp.at(size) |= size >= item ? dp.at(size - item) : 0;
-        return -std::distance(std::crend(dp), std::find(std::crbegin(dp), std::crend(dp), 1)) - 1;
+        return std::distance(std::find(std::crbegin(dp), std::crend(dp), 1), std::crend(dp)) - 1;
     }
 };
