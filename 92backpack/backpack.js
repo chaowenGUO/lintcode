@@ -6,6 +6,6 @@
 const backPack = function (m, A) {
     const dp = [1, ...Array(m).fill(0)]
     A.forEach(item => {
-        for (let size = m; !Object.is(size, 0); --size) dp[size] |= size >= item ? dp[size - item] : 0})
+        for (let size = m; size > item - 1; --size) dp[size] |= dp[size - item]})
     return dp.lastIndexOf(1)
 }
