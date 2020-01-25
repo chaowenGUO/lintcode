@@ -8,7 +8,7 @@ public class Solution {
         // write your code here
         final int dp[] = new int[target + 1];
         dp[0] = 1;
-        Arrays.stream(nums).forEach(item -> java.util.stream.IntStream.range(1, target + 1).forEach(size -> dp[size] += size >= item ? dp[size - item] : 0));
+        Arrays.stream(nums).forEach(item -> java.util.stream.IntStream.range(item, target + 1).forEach(size -> dp[size] += dp[size - item]));
         return dp[dp.length - 1];
     }
 }
