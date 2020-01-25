@@ -8,7 +8,7 @@ public class Solution {
         // write your code here
         final int[] dp = new int[m + 1];
         dp[0] = 1;
-        Arrays.stream(A).forEach(item -> java.util.stream.IntStream.range(1, m + 1).boxed().sorted(Comparator.reverseOrder()).forEach(size -> dp[size] |= size >= item ? dp[size - item] : 0));
+        Arrays.stream(A).forEach(item -> java.util.stream.IntStream.range(item, m + 1).boxed().sorted(Comparator.reverseOrder()).forEach(size -> dp[size] |= dp[size - item]));
         return Arrays.stream(dp).boxed().collect(java.util.stream.Collectors.toList()).lastIndexOf(1);
     }
 }
