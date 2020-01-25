@@ -10,7 +10,7 @@ public:
         std:;vector<int> dp(target + 1);
         dp.front() = 1;
         for (auto const item: nums)
-            for (std::size_t size{target}; size != 0; --size) dp[size] += size >= item ? dp[size - item] : 0;;
+            for (std::size_t size{target}; size > item - 1; --size) dp[size] += dp[size - item];
         return dp.back();
     }
 };
